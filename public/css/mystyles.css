@@ -1,0 +1,30 @@
+/*
+ * Overrides  bootstrap
+ */
+
+body 
+{
+  background-image: url(/images/retina_dust.png);  
+}
+
+.main-content .container
+{
+  background: #FFFFFF;
+  min-height: 500px;  
+}
+
+.trisul_showcase
+ {
+  background: #000080;
+  background: -moz-radial-gradient(top center, ellipse cover, rgba(0,0,64,0.7) 0%, rgba(0,0,18,1.0) 100%), url(/images/silver_scales.png) repeat;  
+  background: -webkit-radial-gradient(top center, ellipse cover, rgba(0,0,64,0.7) 0%, rgba(0,0,18,1.0) 100%), url(/images/silver_scales.png) repeat;  
+  color: #FAFAFA;
+}
+.trisul_showcase h2
+{
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 8px rgba(255,255,255,.4);
+}
+.trisul_showcase h4
+{
+  line-height: 28px;
+}

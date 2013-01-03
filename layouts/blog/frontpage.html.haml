@@ -1,0 +1,23 @@
+!!!
+%html
+    %head
+        %meta{ :keywords => "Network Security Monitoring Stasis Nokogiri Blog"}
+        %title Lorem Ipsum Blog
+
+        =stylesheet_tag('bootstrap', 'mystyles',)
+        =javascript_tag('jquery','bootstrap.min')
+
+    %body
+        %div.main-content
+            .container
+                = render '/layouts/blog/top.html.haml'
+
+                .row.blogbody
+                    = yield
+
+
+
+        = render '/layouts/blog/bottom.html.haml'
+
+
+

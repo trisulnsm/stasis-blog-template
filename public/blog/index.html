@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta keywords='Network Security Monitoring Stasis Nokogiri Blog' />
+<title>Lorem Ipsum Blog</title>
+<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/mystyles.css" type="text/css" media="screen" />
+<script src="/js/jquery.js"  type="text/javascript"  ></script>
+<script src="/js/bootstrap.min.js"  type="text/javascript"  ></script>
+</head>
+<body>
+<div class='main-content'>
+<div class='container'>
+<div class='trisul_showcase'>
+<div class='row'>
+<div class='span2'>
+ <a href="/"><img src="/images/bloglogo.png" alt="Trisul Network Traffic Analytics Logo" style="vertical-align:middle"/></a>
+</div>
+<div class='span8' style='text-align:center'>
+<h1>
+<a href='/blog'>LOREM IPSUM BLOG</a>
+</h1>
+<h4>This is blogs slogan</h4>
+</div>
+<div class='span2'>
+ <a href="/"><img src="/images/bloglogo-flip.png" alt="Trisul Network Traffic Analytics Logo" style="vertical-align:middle"/></a>
+</div>
+</div>
+</div>
+
+<div class='row blogbody'>
+<div class='row'>
+<div class='span8 offset1'>
+<section><a href="first-blog-snmp/post.html"><h1>First blog post on <span class="caps">SNMP</span>
+</h1></a><p class="muted">Posted : Thu Jan  3 16:12:58 2013  by  vivek</p>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem</p>
+<p><img src="first-blog-snmp/images/met1.png" alt=""></p>
+<h3>The problem</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+<h3>What happened to the missing packets</h3>
+<p>We banged our heads for a couple of days trying to figure out what was going on. We confirmed the following</p>
+<ul>
+<li>Nam libero tempore, cum soluta nobis est eligendi optio cumque</li>
+	<li>voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</li>
+	<li>The cable directly connected the switch from upstream end to Trisul</li>
+	<li>voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</li>
+</ul>
+<p>It turns out the <span class="caps">SNMP</span> stats were produced by polling the ifHCInOctets/ifHCOutOctets counters in mib-2 interfaces group.  For Ethernet interfaces this is what <span class="caps">RFC</span> 3635 says.</p>
+<blockquote>
+<p>The Interface <span class="caps">MIB</span> octet counters, ifInOctets, ifOutOctets,</p>
+<p>ifHCInOctets and ifHCOutOctets, <span class="caps">MUST</span> include all octets in valid frames sent or received on the interface, including the <span class="caps">MAC</span> header and <span class="caps">FCS</span>, but not the preamble, start of frame delimiter, or extension octets.</p>
+</blockquote>
+<p></p>
+<p>Note that the 7 byte preamble + 1 byte <span class="caps">SFD</span> isnt included, just the 4 byte <span class="caps">CRC</span>.</p>
+<p>Trisul of course did not see the <span class="caps">CRC</span> because we were relying on the PF_PACKET mechanism to supply packets. Once we added the 4 bytes to every packet we found that the numbers tallied.</p>
+<h3>How to compensate for <span class="caps">FCS</span>
+</h3>
+<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man</p></section><hr><section><a href="screencast-recover-post-data/post.html"><h1>Screencast : Retrieve <span class="caps">POST</span> data from <span class="caps">PCAPS</span>
+</h1></a><p class="muted">Posted : Thu Jan  3 16:12:48 2013  by  vivek</p>
+<p>This is a real story. I spent about 30 mins composing and posting a Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<p>I was able to recover my message within 1 minute.</p>
+<p>This little 4-minute screencast shows you how to</p>
+<ol>
+<li>Pull up list of URLs</li>
+	<li>Use the form to filter <span class="caps">POST</span> requests to specific server</li>
+	<li>Pull out PCAPs into a reconstruction tool like Unsniff Network Analyzer</li>
+	<li>Locate data in reconstructed (ie, unzipped, dechunked) content</li>
+</ol>
+<p>Please excuse the poor audio and the developers voice !</p>
+<p><iframe src="http://www.screenr.com/embed/XDL8" width="650" height="396" frameborder="0"></iframe></p>
+<p>The next post will be about automating this whole process using Ruby and Trisul Remote Protocol.</p></section><hr><section><a href="mysoftware-2.6-released/post.html"><h1>Lorem 2.6 is now released</h1></a><p class="muted">Posted : Thu Jan  3 16:12:38 2013  by  vivek</p>
+<blockquote style="text-align:center;">
+<p style="text-align:center;">Happy Blogging</p>
+</blockquote>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,</p>
+<p>The highlights of this release are ( <a href="/releases/index.html">full list</a> )</p>
+<ol>
+<li>
+<strong>Advanced payload searching</strong> : any text or binary pattern even inside compressed and chunked <span class="caps">HTTP</span> streams</li>
+	<li>
+<strong>Automatic flow tagging</strong> : tag all flows that went to China, pull them up instantly</li>
+	<li>Major updates to documentation and website usability</li>
+</ol>
+<p>sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<p><img src="/images/trisul.png" alt=""><a href="/download/">Download <span class="caps">XXX</span></a> 2.6 for Ubuntu or CentOS today.  Ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui inU.</p></section><hr>
+<hr />
+<p>
+<a class='btn btn-small' href='postindex.html'>Older posts</a>
+</p>
+</div>
+<div class='span3'>
+<h3>Last 5 posts</h3>
+<ul class="unstyled">
+<li><a href="first-blog-snmp/post.html">First blog post on SNMP</a></li>
+<li><a href="screencast-recover-post-data/post.html">Screencast : Retrieve POST data from PCAPS</a></li>
+<li><a href="mysoftware-2.6-released/post.html">Lorem 2.6 is now released</a></li>
+</ul>
+<p>
+<a class='btn btn-small' href='postindex.html'>All posts</a>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='footer'>
+<div class='container'>
+<div class='row'>
+<p class='pull-right'>
+&copy; 2012 Dolor Sit, Lorem
+Brought to you by Super Blogger
+</p>
+</div>
+</div>
+</div>
+
+</body>
+</html>

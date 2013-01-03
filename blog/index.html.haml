@@ -1,0 +1,13 @@
+.row
+    .span8.offset1
+        = latest_posts
+
+        %hr
+        %p
+            %a.btn.btn-small{:href=>"postindex.html"} Older posts 
+    .span3
+        %h3 Last 5 posts
+        = post_list 
+
+        %p
+            %a.btn.btn-small{:href=>"postindex.html"} All posts

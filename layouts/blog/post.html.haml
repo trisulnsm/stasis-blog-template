@@ -1,0 +1,29 @@
+!!!
+%html
+    %head
+        %meta{ :keywords => "Network Security Monitoring Alerts Packet Capture Unsniff "}
+        %title Lorem Ipsum Blog One Post 
+
+        =stylesheet_tag('bootstrap', 'mystyles' )
+        =javascript_tag('jquery','bootstrap.min')
+
+
+    %body
+        %div.main-content
+            .container
+                = render '/layouts/blog/top.html.haml'
+
+                .row.blogbody
+                    .span8.offset2    
+                        %p
+                            = "Posted #{@posted_date} by #{@posted_user}"
+                        
+                        = yield
+
+                        %p
+                            = "Posted #{@posted_date} by #{@posted_user}"
+
+        = render '/layouts/blog/bottom.html.haml'
+
+
+

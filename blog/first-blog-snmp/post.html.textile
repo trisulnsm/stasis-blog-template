@@ -1,0 +1,37 @@
+h1. First blog post on SNMP  
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+
+!images/met1.png!
+
+h3. The problem
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+h3. What happened to the missing packets
+
+We banged our heads for a couple of days trying to figure out what was going on. We confirmed the following
+
+  *  Nam libero tempore, cum soluta nobis est eligendi optio cumque 
+  *  voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
+  *  The cable directly connected the switch from upstream end to Trisul
+  *  voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
+
+It turns out the SNMP stats were produced by polling the ifHCInOctets/ifHCOutOctets counters in mib-2 interfaces group.  For Ethernet interfaces this is what RFC 3635 says.
+
+bq.. 
+    The Interface MIB octet counters, ifInOctets, ifOutOctets,
+
+    ifHCInOctets and ifHCOutOctets, MUST include all octets in valid frames sent or received on the interface, including the MAC header and FCS, but not the preamble, start of frame delimiter, or extension octets.
+
+p. 
+     
+
+Note that the 7 byte preamble + 1 byte SFD isnt included, just the 4 byte CRC.
+
+Trisul of course did not see the CRC because we were relying on the PF_PACKET mechanism to supply packets. Once we added the 4 bytes to every packet we found that the numbers tallied.
+
+
+h3. How to compensate for FCS
+
+Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man 
