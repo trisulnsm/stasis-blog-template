@@ -55,7 +55,7 @@ The secret is Nokogiri
 
 If you know Ruby, you can achieve amazing things with stasis and bootstrap. 
 The secret magic lies in knowing how to use Nokogiri (the HTML manipulator).
-Check out the code in ''''blog/controller.rb'''' where we manipulate the posts. 
+Check out the code in ````blog/controller.rb````  where we manipulate the posts. 
 
 Hope this framework helps you get started !
 
